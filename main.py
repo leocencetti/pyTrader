@@ -3,7 +3,7 @@
 ###
 from itertools import cycle
 from queue import Queue
-from master import TaskMaster
+from task_master import TaskMaster
 from time import sleep
 
 with open('alpha_vantage_api.key', 'r') as f:
