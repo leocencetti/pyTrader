@@ -2,8 +2,8 @@
 # File created by Leonardo Cencetti on 3/31/20
 ###
 from threading import Thread
-from alpha_vantage.timeseries import TimeSeries
-from alpha_vantage.techindicators import TechIndicators
+from alpha_vantage_fork.alpha_vantage.timeseries import TimeSeries
+from alpha_vantage_fork.alpha_vantage.techindicators import TechIndicators
 from time import sleep
 
 

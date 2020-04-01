@@ -1,0 +1,3 @@
+[submodule "alpha_vantage_fork"]
+	path = alpha_vantage_fork
+	url = https://github.com/leocencetti/AlphaVantage-Fork.git
