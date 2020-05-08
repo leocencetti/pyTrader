@@ -4,18 +4,29 @@
 from itertools import cycle
 from queue import Queue
 from task_master import TaskMaster
-from time import sleep
+from time import sleep, time
+import string
+import random
 
-with open('alpha_vantage_api.key', 'r') as f:
-    keys = cycle(f.read().splitlines())
+
+def key_generator(size=16, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
+
+
+t0 = time()
 with open('stock_symbols.txt') as f:
     # symbols = cycle(f.read().splitlines())
     symbols = f.read().splitlines()
 taskQueue = Queue()
 for s in symbols:
-    taskQueue.put({'key': next(keys), 'symbol': s})
+    taskQueue.put({
+        'task_type': '',
+        'key': key_generator(),
+        'symbol': s})
 
-taskMaster = TaskMaster(taskQueue, interval=0.02)
+taskMaster = TaskMaster(taskQueue, num_workers=10)
 taskMaster.start()
-sleep(120)
+taskQueue.join()
 taskMaster.stop()
+t1 = time()
+print('Total time: ', t1 - t0)

@@ -6,7 +6,7 @@ from time import sleep
 
 
 class TaskMaster:
-    def __init__(self, queue, num_workers=5, interval=12):
+    def __init__(self, queue, num_workers=5, interval=0):
         self.queue = queue
         self._threads = []
         self._num_workers = num_workers

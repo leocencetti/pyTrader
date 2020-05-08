@@ -8,9 +8,9 @@ from time import sleep
 
 
 class Worker:
-    def __init__(self, queue, data, interval=12):
-        self.queue = queue
-        self.data = data
+    def __init__(self, taskQueue, dataQueue, interval=12):
+        self.queue = taskQueue
+        self.data = dataQueue
         self._T = None
         self._interval = interval
 
@@ -29,13 +29,15 @@ class Worker:
             ts = TimeSeries(key, output_format='pandas')
             ti = TechIndicators(key, output_format='pandas')
             try:
-                data, meta_data = ts.get_daily(symbol=symbol)
-                # sma, meta_sma = ti.get_sma(symbol=symbol)
+                intraday, meta_intraday = ts.get_intraday(symbol=symbol, interval='1min', outputsize='full')
+                # data, meta_data = ts.get_daily(symbol=symbol, outputsize='full')
+                sma, meta_sma = ti.get_sma(symbol=symbol, interval='1min')
+                # self.data.put()
                 self.queue.task_done()
-                print('[Thread {}] Successful call'.format(round(self._T.ident % 1e4)))
+                print('[Thread {}] \tSuccessful call'.format(round(self._T.ident % 1e4)))
 
             except ValueError:
-                print('[Thread {}] Catched exception!'.format(round(self._T.ident % 1e4)))
+                print('[Thread {}] \tCatched exception!'.format(round(self._T.ident % 1e4)))
                 self.queue.task_done()
                 self.queue.put(item)
             finally:
