@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 # Pycharm config data
-.idea/
+test.py
+/.idea/*

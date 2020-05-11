@@ -1,8 +1,10 @@
 ###
 # File created by Leonardo Cencetti on 3/31/20
 ###
-from worker import Worker
+from queue import Queue
 from time import sleep
+
+from worker import Worker
 
 
 class TaskMaster:
@@ -10,11 +12,11 @@ class TaskMaster:
         self.queue = queue
         self._threads = []
         self._num_workers = num_workers
-        self.data = None
+        self._data = Queue()
         self._interval = interval
 
         for i in range(self._num_workers):
-            t = Worker(self.queue, self.data, self._interval)
+            t = Worker(self.queue, self._data, self._interval)
             self._threads.append(t)
 
     def start(self, blocking=False):
@@ -37,3 +39,6 @@ class TaskMaster:
         for t in self._threads:
             t.join()
         print('[TaskMaster] Stopped all workers.')
+
+    def getData(self):
+        return {result[0]: result[1] for result in list(self._data.queue)}

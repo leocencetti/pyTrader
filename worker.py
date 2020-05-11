@@ -2,9 +2,22 @@
 # File created by Leonardo Cencetti on 3/31/20
 ###
 from threading import Thread
-from alpha_vantage_fork.alpha_vantage.timeseries import TimeSeries
-from alpha_vantage_fork.alpha_vantage.techindicators import TechIndicators
 from time import sleep
+
+from alpha_vantage_fork.alpha_vantage.techindicators import TechIndicators
+from alpha_vantage_fork.alpha_vantage.timeseries import TimeSeries
+
+
+def get_intraday(symbol, key):
+    ts = TimeSeries(key, output_format='pandas')
+    intraday, _ = ts.get_intraday(symbol=symbol, interval='1min', outputsize='compact')
+    return intraday
+
+
+def get_sma(symbol, key):
+    ti = TechIndicators(key, output_format='pandas')
+    sma, _ = ti.get_sma(symbol=symbol, interval='1min')
+    return sma
 
 
 class Worker:
@@ -26,18 +39,14 @@ class Worker:
                 break
             key = item['key']
             symbol = item['symbol']
-            ts = TimeSeries(key, output_format='pandas')
-            ti = TechIndicators(key, output_format='pandas')
             try:
-                intraday, meta_intraday = ts.get_intraday(symbol=symbol, interval='1min', outputsize='full')
-                # data, meta_data = ts.get_daily(symbol=symbol, outputsize='full')
-                sma, meta_sma = ti.get_sma(symbol=symbol, interval='1min')
-                # self.data.put()
+                data = get_intraday(symbol, key)
+                sma = get_sma(symbol, key)
+                self.data.put((symbol, data))
                 self.queue.task_done()
-                print('[Thread {}] \tSuccessful call'.format(round(self._T.ident % 1e4)))
 
             except ValueError:
-                print('[Thread {}] \tCatched exception!'.format(round(self._T.ident % 1e4)))
+                print('[{0: <9}] Caught exception, retrying!'.format(self._T.name))
                 self.queue.task_done()
                 self.queue.put(item)
             finally:
