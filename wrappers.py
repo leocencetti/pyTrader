@@ -17,13 +17,14 @@ def key_generator(size=16, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
 
-def fetchStocks(symbols, num_workers=10):
+def fetchStocks(symbols, data_types, num_workers=10):
     taskQueue = Queue()
     for s in symbols:
-        taskQueue.put({
-            'task_type': '',
-            'key'      : key_generator(),
-            'symbol'   : s})
+        for d in data_types:
+            taskQueue.put({
+                'task_type': d,
+                'key'      : key_generator(),
+                'symbol'   : s})
 
     taskMaster = TaskMaster(taskQueue, num_workers)
     taskMaster.start()

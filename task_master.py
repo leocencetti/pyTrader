@@ -4,6 +4,8 @@
 from queue import Queue
 from time import sleep
 
+import pandas as pd
+
 from worker import Worker
 
 
@@ -41,4 +43,4 @@ class TaskMaster:
         print('[TaskMaster] Stopped all workers.')
 
     def getData(self):
-        return {result[0]: result[1] for result in list(self._data.queue)}
+        return pd.concat(list(self._data.queue), ignore_index=True)
