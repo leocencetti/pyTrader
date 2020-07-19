@@ -57,7 +57,7 @@ class AlphaVantage(object):
         self.headers = {}
         if rapidapi:
             self.headers = {
-                'x-rapidapi-host': "alpha-vantage.p.rapidapi.com",
+                'x-rapidapi-host': "alphavantage.p.rapidapi.com",
                 'x-rapidapi-key': key
             }
         else:

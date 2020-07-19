@@ -42,5 +42,5 @@ class TaskMaster:
             t.join()
         print('[TaskMaster] Stopped all workers.')
 
-    def getData(self):
-        return pd.concat(list(self._data.queue), ignore_index=True)
+    def get_data(self):
+        return pd.concat(list(self._data.queue), ignore_index=True).set_index('date')
