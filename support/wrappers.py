@@ -10,7 +10,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objects as go
 
-from task_master import TaskMaster
+from support.task_master import TaskMaster
 
 
 def key_generator(size=16, chars=string.ascii_uppercase + string.digits):

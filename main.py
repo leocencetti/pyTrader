@@ -3,13 +3,13 @@
 ###
 import pandas as pd
 
-from dash_app import DashApp
-from wrappers import fetchStocks
+from scripts.dash_app import DashApp
+from support.wrappers import fetchStocks
 
 mode = 'run'
 
 if mode == 'get':
-    with open('stock_symbols.txt') as f:
+    with open('data/stock_symbols.txt') as f:
         symbols_list = f.read().splitlines()
 
     task_list = ['fintraday', 'sma50', 'sma200', 'ema50', 'ema200']

@@ -130,4 +130,4 @@ dmypy.json
 
 # Pycharm config data
 test.py
-/.idea/*
+**/.idea

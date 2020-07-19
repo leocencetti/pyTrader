@@ -6,7 +6,7 @@ from time import sleep
 
 import pandas as pd
 
-from worker import Worker
+from support.worker import Worker
 
 
 class TaskMaster:
