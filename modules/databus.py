@@ -1,8 +1,8 @@
 ###
 # File created by Leonardo Cencetti on 7/19/20
 ###
-from queue import Queue
 import logging
+from queue import Queue
 
 
 class TopicNotFound(Exception):
@@ -13,33 +13,11 @@ class TopicExistsAlready(Exception):
     pass
 
 
-class Topic:
+class Topic(Queue):
     def __init__(self, topic_name):
-        self._bus = Queue()
+        super().__init__()
         self._logger = logging.getLogger(topic_name)
         self._name = topic_name
-
-    def get(self, no_wait=False):
-        """
-        Gets the next item in the topic queue.
-        :param bool no_wait: do not wait for item to be available in the queue.
-        :return: item of the queue.
-        """
-        if no_wait:
-            return self._bus.get_nowait()
-        else:
-            return self._bus.get()
-
-    def put(self, item, no_wait=False):
-        """
-        Adds an item to the topic queue.
-        :param item: item to be added.
-        :param bool no_wait: do not wait for an empty slot in the queue.
-        """
-        if no_wait:
-            self._bus.put_nowait(item)
-        else:
-            self._bus.put(item)
 
     def close(self, no_wait=False):
         """
@@ -48,15 +26,13 @@ class Topic:
         """
         if no_wait:
             self._logger.debug('Closing topic immediately, all data will be flushed.')
-            with self._bus.mutex:
-                self._bus.queue.clear()
-                self._bus.all_tasks_done.notify_all()
-                self._bus.unfinished_tasks = 0
-            self._bus = None
+            with self.mutex:
+                self.queue.clear()
+                self.all_tasks_done.notify_all()
+                self.unfinished_tasks = 0
         else:
             self._logger.debug('Waiting for queue to be emptied.')
-            self._bus.join()
-            self._bus = None
+            self.join()
         self._logger.debug('Topic closed.')
 
 
@@ -65,12 +41,11 @@ class BusManager:
         self._logger = logging.getLogger(__name__)
         self._topics = dict()
 
-    def add_bus(self, topic_name, exists_ok=False):
+    def add_topic(self, topic_name, exists_ok=False):
         """
-        Adds a bus.
+        Creates a topic.
         :param str topic_name: name of the topic to be created.
         :param bool exists_ok: raise exception if topic exists already.
-        :return: Topic: topic instance.
         """
         if topic_name in self._topics:
             if exists_ok:
@@ -84,11 +59,11 @@ class BusManager:
             self._logger.debug('Created bus "{}".'.format(topic_name))
             self._topics[topic_name] = Topic(topic_name)
 
-        return self._topics[topic_name]
+        return self
 
-    def remove_bus(self, topic_name, no_wait=False, missing_ok=True):
+    def remove_topic(self, topic_name, no_wait=False, missing_ok=True):
         """
-        Removes a specific bus.
+        Removes a specific topic.
         :param str topic_name: name of the topic to be removed.
         :param bool no_wait: do not wait for the topic to be empty before closing.
         :param bool missing_ok: raise exception if topic is not found.
@@ -107,7 +82,7 @@ class BusManager:
             self._logger.error(msg)
             raise TopicNotFound(msg)
 
-    def get_bus(self, topic_name, create_if_missing=False):
+    def get_topic(self, topic_name, create_if_missing=False):
         """
         Retrieves a topic handle.
         :param str topic_name: name of the topic to be retrieved.
@@ -117,7 +92,7 @@ class BusManager:
         if topic_name not in self._topics:
             if create_if_missing:
                 self._logger.warning('Bus "{}" does not exists, creating it.'.format(topic_name))
-                self.add_bus(topic_name)
+                self.add_topic(topic_name)
             else:
                 msg = 'Bus "{}" does not exists.'.format(topic_name)
                 self._logger.error(msg)

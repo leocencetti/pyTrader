@@ -2,65 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9805136-5151-47c3-8293-eacb4b63968e" name="Default Changelist" comment="Adds">
-      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pyTrader.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pyTrader.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/.gitrepo" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/.gitrepo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/.readthedocs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/.readthedocs.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/MANIFEST.in" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/MANIFEST.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/alphavantage.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/alphavantage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/async_support/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/async_support/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/async_support/alphavantage.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/async_support/alphavantage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/async_support/cryptocurrencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/async_support/cryptocurrencies.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/async_support/foreignexchange.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/async_support/foreignexchange.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/async_support/sectorperformance.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/async_support/sectorperformance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/async_support/techindicators.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/async_support/techindicators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/async_support/timeseries.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/async_support/timeseries.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/cryptocurrencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/cryptocurrencies.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/foreignexchange.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/foreignexchange.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/sectorperformance.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/sectorperformance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/techindicators.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/techindicators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/alpha_vantage/timeseries.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/alpha_vantage/timeseries.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/docs/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/docs/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/docs/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/docs/conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/docs/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/docs/index.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/docs/make.bat" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/docs/make.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/docs/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/docs/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/docs/source/alpha_vantage.rst" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/docs/source/alpha_vantage.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/docs/source/modules.rst" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/docs/source/modules.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/helpers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/helpers/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/helpers/pipy_rst_convert.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/helpers/pipy_rst_convert.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/images/docs_cripto_btc.png" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/images/docs_cripto_btc.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/images/docs_data_frame_header.png" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/images/docs_data_frame_header.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/images/docs_sp_rt_example.png" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/images/docs_sp_rt_example.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/images/docs_ti_msft_example.png" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/images/docs_ti_msft_example.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/images/docs_ts_msft_example.png" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/images/docs_ts_msft_example.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/setup.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/test_alpha_vantage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/test_alpha_vantage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/test_alpha_vantage/test_alphavantage.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/test_alpha_vantage/test_alphavantage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/test_alpha_vantage/test_alphavantage_async.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/test_alpha_vantage/test_alphavantage_async.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/test_alpha_vantage/test_data/global_quote" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/test_alpha_vantage/test_data/global_quote" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/test_alpha_vantage/test_data/mock_crypto_currencies" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/test_alpha_vantage/test_data/mock_crypto_currencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/test_alpha_vantage/test_data/mock_foreign_exchange" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/test_alpha_vantage/test_data/mock_foreign_exchange" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/test_alpha_vantage/test_data/mock_sector" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/test_alpha_vantage/test_data/mock_sector" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/test_alpha_vantage/test_data/mock_technical_indicator" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/test_alpha_vantage/test_data/mock_technical_indicator" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/test_alpha_vantage/test_data/mock_time_series" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/test_alpha_vantage/test_data/mock_time_series" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/test_alpha_vantage/test_data/symbol_search" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/test_alpha_vantage/test_data/symbol_search" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/test_alpha_vantage/test_integration_alphavantage.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/test_alpha_vantage/test_integration_alphavantage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alpha-vantage/test_alpha_vantage/test_integration_alphavantage_async.py" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/test_alpha_vantage/test_integration_alphavantage_async.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/external/alphavantage/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/strategy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/support/task_master.py" beforeDir="false" afterPath="$PROJECT_DIR$/support/task_master.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/support/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/support/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/support/wrappers.py" beforeDir="false" afterPath="$PROJECT_DIR$/support/wrappers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/processor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/broker.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/broker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/dashboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/databus.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/databus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/master.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/master.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/storage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/out.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/out.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/support/alpha_vantage_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/support/alpha_vantage_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/support/task_master.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/support/worker.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/support/wrappers.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,15 +57,38 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
       <recent name="D:\Documents\PycharmProjects\pyTrader\assets" />
       <recent name="D:\Documents\PycharmProjects\pyTrader\data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.strategy">
+  <component name="RunManager" selected="Python.main">
+    <configuration name="colored_logging" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pyTrader" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/colored_logging.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="dash_app" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pyTrader" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -152,6 +133,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="master" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pyTrader" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/modules" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modules/master.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="strategy" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pyTrader" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -174,34 +177,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="pyTrader" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.strategy" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.colored_logging" />
+        <item itemvalue="Python.master" />
+        <item itemvalue="Python.strategy" />
         <item itemvalue="Python.dash_app" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -222,7 +204,9 @@
       <workItem from="1589123273808" duration="24020000" />
       <workItem from="1589749351395" duration="25000" />
       <workItem from="1590055521808" duration="37975000" />
-      <workItem from="1595170231148" duration="3252000" />
+      <workItem from="1595170231148" duration="4867000" />
+      <workItem from="1595175527608" duration="6082000" />
+      <workItem from="1595231114668" duration="17713000" />
     </task>
     <task id="LOCAL-00001" summary="Adds Plotly plotting">
       <created>1589155340114</created>
@@ -265,50 +249,66 @@
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="3387" y="459" width="256" height="316" key="#Notifications" timestamp="1595176940869">
+      <screen x="2560" y="0" width="1920" height="1200" />
+    </state>
+    <state x="3387" y="459" width="256" height="316" key="#Notifications/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595176940869" />
+    <state x="3590" y="27" width="880" height="1173" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595178458252">
+      <screen x="2560" y="0" width="1920" height="1200" />
+    </state>
+    <state x="3590" y="27" width="880" height="1173" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595178458252" />
+    <state x="3253" y="362" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595266781820">
+      <screen x="2560" y="0" width="1920" height="1200" />
+    </state>
+    <state x="3253" y="362" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595266781820" />
     <state x="2774" y="324" key="#xdebugger.evaluate" timestamp="1595172763115">
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
     <state x="2774" y="324" key="#xdebugger.evaluate/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595172763115" />
-    <state width="1874" height="245" key="GridCell.Tab.0.bottom" timestamp="1595173287106">
+    <state width="1874" height="349" key="GridCell.Tab.0.bottom" timestamp="1595267082265">
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
-    <state width="1874" height="245" key="GridCell.Tab.0.bottom/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595173287106" />
-    <state width="1874" height="245" key="GridCell.Tab.0.center" timestamp="1595173287106">
+    <state width="1874" height="349" key="GridCell.Tab.0.bottom/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595267082265" />
+    <state width="1874" height="349" key="GridCell.Tab.0.center" timestamp="1595267082265">
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
-    <state width="1874" height="245" key="GridCell.Tab.0.center/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595173287106" />
-    <state width="1874" height="245" key="GridCell.Tab.0.left" timestamp="1595173287106">
+    <state width="1874" height="349" key="GridCell.Tab.0.center/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595267082265" />
+    <state width="1874" height="349" key="GridCell.Tab.0.left" timestamp="1595267082265">
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
-    <state width="1874" height="245" key="GridCell.Tab.0.left/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595173287106" />
-    <state width="1874" height="245" key="GridCell.Tab.0.right" timestamp="1595173287106">
+    <state width="1874" height="349" key="GridCell.Tab.0.left/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595267082265" />
+    <state width="1874" height="349" key="GridCell.Tab.0.right" timestamp="1595267082265">
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
-    <state width="1874" height="245" key="GridCell.Tab.0.right/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595173287106" />
-    <state width="1874" height="245" key="GridCell.Tab.1.bottom" timestamp="1595173287106">
+    <state width="1874" height="349" key="GridCell.Tab.0.right/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595267082265" />
+    <state width="1874" height="245" key="GridCell.Tab.1.bottom" timestamp="1595175510865">
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
-    <state width="1874" height="245" key="GridCell.Tab.1.bottom/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595173287106" />
-    <state width="1874" height="245" key="GridCell.Tab.1.center" timestamp="1595173287106">
+    <state width="1874" height="245" key="GridCell.Tab.1.bottom/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595175510865" />
+    <state width="1874" height="245" key="GridCell.Tab.1.center" timestamp="1595175510865">
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
-    <state width="1874" height="245" key="GridCell.Tab.1.center/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595173287106" />
-    <state width="1874" height="245" key="GridCell.Tab.1.left" timestamp="1595173287106">
+    <state width="1874" height="245" key="GridCell.Tab.1.center/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595175510865" />
+    <state width="1874" height="245" key="GridCell.Tab.1.left" timestamp="1595175510865">
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
-    <state width="1874" height="245" key="GridCell.Tab.1.left/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595173287106" />
-    <state width="1874" height="245" key="GridCell.Tab.1.right" timestamp="1595173287106">
+    <state width="1874" height="245" key="GridCell.Tab.1.left/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595175510865" />
+    <state width="1874" height="245" key="GridCell.Tab.1.right" timestamp="1595175510865">
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
-    <state width="1874" height="245" key="GridCell.Tab.1.right/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595173287106" />
-    <state x="3009" y="248" width="1022" height="737" key="SettingsEditor" timestamp="1595172106722">
+    <state width="1874" height="245" key="GridCell.Tab.1.right/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595175510865" />
+    <state x="3009" y="248" width="1022" height="737" key="SettingsEditor" timestamp="1595176953570">
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
-    <state x="3009" y="248" width="1022" height="737" key="SettingsEditor/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595172106722" />
+    <state x="3009" y="248" width="1022" height="737" key="SettingsEditor/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595176953570" />
     <state x="3212" y="228" width="616" height="771" key="find.popup" timestamp="1595171378635">
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
     <state x="3212" y="228" width="616" height="771" key="find.popup/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595171378635" />
+    <state x="3183" y="289" key="search.everywhere.popup" timestamp="1595174311701">
+      <screen x="2560" y="0" width="1920" height="1200" />
+    </state>
+    <state x="3183" y="289" key="search.everywhere.popup/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595174311701" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -324,7 +324,9 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pyTrader$strategy.coverage" NAME="strategy Coverage Results" MODIFIED="1595173287096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/pyTrader$dash_app.coverage" NAME="dash_app Coverage Results" MODIFIED="1590078105067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyTrader$master.coverage" NAME="master Coverage Results" MODIFIED="1595258455288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modules" />
     <SUITE FILE_PATH="coverage/pyTrader$test.coverage" NAME="test Coverage Results" MODIFIED="1589133052815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyTrader$main.coverage" NAME="main Coverage Results" MODIFIED="1590105556536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyTrader$main.coverage" NAME="main Coverage Results" MODIFIED="1595267082261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyTrader$colored_logging.coverage" NAME="colored_logging Coverage Results" MODIFIED="1595265347762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
   </component>
 </project>

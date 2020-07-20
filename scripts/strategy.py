@@ -5,7 +5,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-from support.wrappers import fetch_data
 
 symbols_list = ['AAPL']
 

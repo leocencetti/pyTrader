@@ -1,4 +1,15 @@
 ###
 # File created by Leonardo Cencetti on 7/19/20
 ###
-import logging
+
+
+class Logger:
+
+    def run(self):
+        pass
+
+    def stop(self):
+        pass
+
+    def close(self):
+        pass

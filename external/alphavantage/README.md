@@ -79,7 +79,7 @@ are the ones given by their data structure. For example, the following call:
 from alpha_vantage.timeseries import TimeSeries
 from pprint import pprint
 ts = TimeSeries(key='YOUR_API_KEY', output_format='pandas')
-data, meta_data = ts.get_intraday(symbol='MSFT',interval='1min', outputsize='full')
+data, meta_data = ts.get_intraday(symbol='MSFT',interval='1min', output_size='full')
 pprint(data.head(2))
 ```
 Would result on:
@@ -95,7 +95,7 @@ from alpha_vantage.timeseries import TimeSeries
 import matplotlib.pyplot as plt
 
 ts = TimeSeries(key='YOUR_API_KEY', output_format='pandas')
-data, meta_data = ts.get_intraday(symbol='MSFT',interval='1min', outputsize='full')
+data, meta_data = ts.get_intraday(symbol='MSFT',interval='1min', output_size='full')
 data['4. close'].plot()
 plt.title('Intraday Times Series for the MSFT stock (1 min)')
 plt.show()

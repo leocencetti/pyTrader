@@ -1,21 +1,25 @@
 ###
 # File created by Leonardo Cencetti on 3/31/20
 ###
-import pandas as pd
+import logging
+import signal
+import sys
 
-from scripts.dash_app import DashApp
-from support.wrappers import fetch_data
+from modules.master import Master
 
-mode = 'run'
+logger = logging.getLogger(__name__)
+master = Master()
 
-if mode == 'get':
-    with open('data/stock_symbols.txt') as f:
-        symbols_list = f.read().splitlines()
 
-    task_list = ['full_intraday', 'sma50', 'sma200', 'ema50', 'ema200']
-    data = fetch_data(symbols_list, task_list)
-    data.to_pickle('data/backup.pkl')
-elif mode == 'run':
-    data = pd.read_pickle('data/backup.pkl')
-    dash_app = DashApp(data)
-    dash_app.run()
+def exit_gracefully(sig, frame):
+    logger.info('Received {}: exiting...'.format(sig))
+    master.close()
+    sys.exit(0)
+
+
+if __name__ == '__main__':
+    signal.signal(signal.SIGINT, exit_gracefully)
+    signal.signal(signal.SIGTERM, exit_gracefully)
+
+    master.run()
+    master.stop()
