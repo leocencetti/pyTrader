@@ -6,7 +6,7 @@ import logging
 # Topics
 RAW_DATA_BUS = 'source_data'
 RAW_REQ_BUS = 'raw_requests'
-DB_DATA_BUS = 'db_data'
+DB_RES_BUS = 'db_data'
 DB_REQ_BUS = 'db_request'
 
 # Master

@@ -4,6 +4,9 @@
 
 
 class Processor:
+    def __init__(self):
+        self.stock_list = []
+
     def run(self):
         pass
 

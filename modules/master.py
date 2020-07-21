@@ -29,12 +29,13 @@ class Architecture:
 class Master:
     def __init__(self):
         self._logger = logging.getLogger(__name__)
+        self._running = False
 
         self.bus = BusManager() \
             .add_topic(RAW_REQ_BUS) \
             .add_topic(RAW_DATA_BUS) \
             .add_topic(DB_REQ_BUS) \
-            .add_topic(DB_DATA_BUS)
+            .add_topic(DB_RES_BUS)
         # instantiate modules
         self.modules = Architecture(
             broker=Broker(),
@@ -45,28 +46,34 @@ class Master:
             ),
             logger=Logger(),
             processor=Processor(),
-            storage=Storage(),
+            storage=Storage(
+                request_bus=self.bus.get_topic(DB_REQ_BUS),
+                response_bus=self.bus.get_topic(DB_RES_BUS),
+            ),
         )
 
     def run(self):
+        if self._running:
+            self._logger.warning('Module already running.')
+            return
         self._logger.info('Starting all modules.')
         for mod in self.modules:
             mod.run()
-
-        import datetime as dt
-        import pandas as pd
-        from support.types import StockResponse
-        msg = StockResponse(symbol='GOOG', type='intraday', interval='1min', data=pd.DataFrame(),
-                            timestamp=dt.datetime.now())
-        self.modules.storage.store_data(msg)
+        self._running = True
         self.modules.processor.join()
 
     def close(self):
+        if not self._running:
+            self._logger.warning('Module not running.')
+            return
         self._logger.info('Closing all modules.')
         for mod in self.modules:
             mod.close()
 
     def stop(self):
+        if not self._running:
+            self._logger.warning('Module not running.')
+            return
         self._logger.info('Stopping all modules.')
         for mod in self.modules:
             mod.stop()
