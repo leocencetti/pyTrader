@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9805136-5151-47c3-8293-eacb4b63968e" name="Default Changelist" comment="Adds">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/external/alphavantage/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/external/alphavantage/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/processor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/broker.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/broker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/dashboard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/databus.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/databus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/logger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/master.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/master.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/storage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/out.html" beforeDir="false" afterPath="$PROJECT_DIR$/data/out.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/support/alpha_vantage_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/support/alpha_vantage_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/support/task_master.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/support/worker.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/support/wrappers.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +30,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="sqlite.xerial" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -207,6 +193,7 @@
       <workItem from="1595170231148" duration="4867000" />
       <workItem from="1595175527608" duration="6082000" />
       <workItem from="1595231114668" duration="17713000" />
+      <workItem from="1595320461883" duration="12277000" />
     </task>
     <task id="LOCAL-00001" summary="Adds Plotly plotting">
       <created>1589155340114</created>
@@ -253,6 +240,18 @@
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
     <state x="3387" y="459" width="256" height="316" key="#Notifications/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595176940869" />
+    <state x="2560" y="467" width="1390" height="300" key="#SQL_Dialects" timestamp="1595328542062">
+      <screen x="2560" y="0" width="1920" height="1200" />
+    </state>
+    <state x="2560" y="467" width="1390" height="300" key="#SQL_Dialects/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595328542062" />
+    <state x="2978" y="271" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595328754539">
+      <screen x="2560" y="0" width="1920" height="1200" />
+    </state>
+    <state x="2978" y="271" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595328754539" />
+    <state x="3207" y="410" width="615" height="413" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595324610635">
+      <screen x="2560" y="0" width="1920" height="1200" />
+    </state>
+    <state x="3207" y="410" width="615" height="413" key="#com.intellij.fileTypes.FileTypeChooser/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595324610635" />
     <state x="3590" y="27" width="880" height="1173" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595178458252">
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
@@ -265,37 +264,49 @@
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
     <state x="2774" y="324" key="#xdebugger.evaluate/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595172763115" />
-    <state width="1874" height="349" key="GridCell.Tab.0.bottom" timestamp="1595267082265">
+    <state x="3161" y="371" width="424" height="491" key="FileChooserDialogImpl" timestamp="1595328725989">
       <screen x="2560" y="0" width="1920" height="1200" />
     </state>
-    <state width="1874" height="349" key="GridCell.Tab.0.bottom/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595267082265" />
-    <state width="1874" height="349" key="GridCell.Tab.0.center" timestamp="1595267082265">
-      <screen x="2560" y="0" width="1920" height="1200" />
+    <state x="3161" y="371" width="424" height="491" key="FileChooserDialogImpl/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595328725989" />
+    <state width="1666" height="227" key="GridCell.Tab.0.bottom" timestamp="1595336238706">
+      <screen x="0" y="27" width="1280" height="693" />
     </state>
-    <state width="1874" height="349" key="GridCell.Tab.0.center/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595267082265" />
-    <state width="1874" height="349" key="GridCell.Tab.0.left" timestamp="1595267082265">
-      <screen x="2560" y="0" width="1920" height="1200" />
+    <state width="1666" height="227" key="GridCell.Tab.0.bottom/1280.0.960.600/0.27.1280.693@0.27.1280.693" timestamp="1595336238706" />
+    <state width="914" height="157" key="GridCell.Tab.0.bottom/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595326195936" />
+    <state width="1666" height="227" key="GridCell.Tab.0.center" timestamp="1595336238705">
+      <screen x="0" y="27" width="1280" height="693" />
     </state>
-    <state width="1874" height="349" key="GridCell.Tab.0.left/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595267082265" />
-    <state width="1874" height="349" key="GridCell.Tab.0.right" timestamp="1595267082265">
-      <screen x="2560" y="0" width="1920" height="1200" />
+    <state width="1666" height="227" key="GridCell.Tab.0.center/1280.0.960.600/0.27.1280.693@0.27.1280.693" timestamp="1595336238705" />
+    <state width="914" height="157" key="GridCell.Tab.0.center/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595326195936" />
+    <state width="1666" height="227" key="GridCell.Tab.0.left" timestamp="1595336238705">
+      <screen x="0" y="27" width="1280" height="693" />
     </state>
-    <state width="1874" height="349" key="GridCell.Tab.0.right/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595267082265" />
-    <state width="1874" height="245" key="GridCell.Tab.1.bottom" timestamp="1595175510865">
-      <screen x="2560" y="0" width="1920" height="1200" />
+    <state width="1666" height="227" key="GridCell.Tab.0.left/1280.0.960.600/0.27.1280.693@0.27.1280.693" timestamp="1595336238705" />
+    <state width="914" height="157" key="GridCell.Tab.0.left/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595326195936" />
+    <state width="1666" height="227" key="GridCell.Tab.0.right" timestamp="1595336238706">
+      <screen x="0" y="27" width="1280" height="693" />
     </state>
+    <state width="1666" height="227" key="GridCell.Tab.0.right/1280.0.960.600/0.27.1280.693@0.27.1280.693" timestamp="1595336238706" />
+    <state width="914" height="157" key="GridCell.Tab.0.right/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595326195936" />
+    <state width="1666" height="227" key="GridCell.Tab.1.bottom" timestamp="1595336238707">
+      <screen x="0" y="27" width="1280" height="693" />
+    </state>
+    <state width="1666" height="227" key="GridCell.Tab.1.bottom/1280.0.960.600/0.27.1280.693@0.27.1280.693" timestamp="1595336238707" />
     <state width="1874" height="245" key="GridCell.Tab.1.bottom/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595175510865" />
-    <state width="1874" height="245" key="GridCell.Tab.1.center" timestamp="1595175510865">
-      <screen x="2560" y="0" width="1920" height="1200" />
+    <state width="1666" height="227" key="GridCell.Tab.1.center" timestamp="1595336238706">
+      <screen x="0" y="27" width="1280" height="693" />
     </state>
+    <state width="1666" height="227" key="GridCell.Tab.1.center/1280.0.960.600/0.27.1280.693@0.27.1280.693" timestamp="1595336238706" />
     <state width="1874" height="245" key="GridCell.Tab.1.center/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595175510865" />
-    <state width="1874" height="245" key="GridCell.Tab.1.left" timestamp="1595175510865">
-      <screen x="2560" y="0" width="1920" height="1200" />
+    <state width="1666" height="227" key="GridCell.Tab.1.left" timestamp="1595336238706">
+      <screen x="0" y="27" width="1280" height="693" />
     </state>
+    <state width="1666" height="227" key="GridCell.Tab.1.left/1280.0.960.600/0.27.1280.693@0.27.1280.693" timestamp="1595336238706" />
     <state width="1874" height="245" key="GridCell.Tab.1.left/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595175510865" />
-    <state width="1874" height="245" key="GridCell.Tab.1.right" timestamp="1595175510865">
-      <screen x="2560" y="0" width="1920" height="1200" />
+    <state width="1666" height="227" key="GridCell.Tab.1.right" timestamp="1595336238706">
+      <screen x="0" y="27" width="1280" height="693" />
     </state>
+    <state width="1666" height="227" key="GridCell.Tab.1.right/1280.0.960.600/0.27.1280.693@0.27.1280.693" timestamp="1595336238706" />
     <state width="1874" height="245" key="GridCell.Tab.1.right/2560.0.1920.1200/0.27.2560.1413@2560.0.1920.1200" timestamp="1595175510865" />
     <state x="3009" y="248" width="1022" height="737" key="SettingsEditor" timestamp="1595176953570">
       <screen x="2560" y="0" width="1920" height="1200" />
@@ -326,7 +337,7 @@
     <SUITE FILE_PATH="coverage/pyTrader$dash_app.coverage" NAME="dash_app Coverage Results" MODIFIED="1590078105067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyTrader$master.coverage" NAME="master Coverage Results" MODIFIED="1595258455288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modules" />
     <SUITE FILE_PATH="coverage/pyTrader$test.coverage" NAME="test Coverage Results" MODIFIED="1589133052815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pyTrader$main.coverage" NAME="main Coverage Results" MODIFIED="1595267082261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pyTrader$main.coverage" NAME="main Coverage Results" MODIFIED="1595335901435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pyTrader$colored_logging.coverage" NAME="colored_logging Coverage Results" MODIFIED="1595265347762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
   </component>
 </project>

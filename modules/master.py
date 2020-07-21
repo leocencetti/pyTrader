@@ -29,16 +29,18 @@ class Architecture:
 class Master:
     def __init__(self):
         self._logger = logging.getLogger(__name__)
-        # instantiate modules
-        self.bus = BusManager() \
-            .add_topic(DATA_REQ_BUS) \
-            .add_topic(RAW_DATA_BUS)
 
+        self.bus = BusManager() \
+            .add_topic(RAW_REQ_BUS) \
+            .add_topic(RAW_DATA_BUS) \
+            .add_topic(DB_REQ_BUS) \
+            .add_topic(DB_DATA_BUS)
+        # instantiate modules
         self.modules = Architecture(
             broker=Broker(),
             dashboard=Dashboard(),
             interface=Interface(
-                task_bus=self.bus.get_topic(DATA_REQ_BUS),
+                task_bus=self.bus.get_topic(RAW_REQ_BUS),
                 data_bus=self.bus.get_topic(RAW_DATA_BUS)
             ),
             logger=Logger(),
@@ -51,6 +53,14 @@ class Master:
         for mod in self.modules:
             mod.run()
 
+        import datetime as dt
+        import pandas as pd
+        from support.types import StockResponse
+        msg = StockResponse(symbol='GOOG', type='intraday', interval='1min', data=pd.DataFrame(),
+                            timestamp=dt.datetime.now())
+        self.modules.storage.store_data(msg)
+        self.modules.processor.join()
+
     def close(self):
         self._logger.info('Closing all modules.')
         for mod in self.modules:
@@ -60,12 +70,3 @@ class Master:
         self._logger.info('Stopping all modules.')
         for mod in self.modules:
             mod.stop()
-
-
-def main():
-    master = Master()
-    master.run()
-
-
-if __name__ == '__main__':
-    main()

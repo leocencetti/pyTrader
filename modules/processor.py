@@ -12,3 +12,7 @@ class Processor:
 
     def close(self):
         pass
+
+    def join(self):
+        while True:
+            pass

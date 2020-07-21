@@ -20,7 +20,8 @@ class Interface:
         self._running = False
         # main
         self.source = AlphaVantage()
-        self._thread = Thread()
+        self.thread = Thread(target=self._routine)
+        self.thread.daemon = True
 
     def run(self, join=False):
         if self._running:
@@ -28,14 +29,12 @@ class Interface:
             return
         # start the thread
         self._sig_interrupt = False
-        self._thread = Thread(target=self._routine)
-        self._thread.daemon = True
-        self._thread.start()
+        self.thread.start()
 
         self._logger.debug('Thread started.')
         if join:
             self._logger.debug('Joining thread.')
-            self._thread.join()
+            self.thread.join()
 
     def stop(self):
         if not self._running:
@@ -44,7 +43,7 @@ class Interface:
         # stopping thread
         self._logger.debug('Stopping thread.')
         self._sig_interrupt = True
-        self._thread.join()
+        self.thread.join()
         self._running = False
         self._logger.debug('Thread stopped.')
 
