@@ -25,6 +25,7 @@ class Architecture:
     def __getitem__(self, item):
         return list(vars(self).values())[item]
 
+stock_list = []
 
 class Master:
     def __init__(self):
@@ -41,15 +42,19 @@ class Master:
             broker=Broker(),
             dashboard=Dashboard(),
             interface=Interface(
-                task_bus=self.bus.get_topic(RAW_REQ_BUS),
-                data_bus=self.bus.get_topic(RAW_DATA_BUS)
+                input_bus=self.bus.get_topic(RAW_REQ_BUS),
+                output_bus=self.bus.get_topic(RAW_DATA_BUS)
             ),
             logger=Logger(),
-            processor=Processor(),
-            storage=Storage(
-                request_bus=self.bus.get_topic(DB_REQ_BUS),
-                response_bus=self.bus.get_topic(DB_RES_BUS),
+            processor=Processor(
+                input_bus=self.bus.get_topic(DB_REQ_BUS),
+                output_bus=self.bus.get_topic(DB_RES_BUS),
+                stock_list=stock_list
             ),
+            storage=Storage(
+                input_bus=self.bus.get_topic(DB_REQ_BUS),
+                output_bus=self.bus.get_topic(DB_RES_BUS)
+            )
         )
 
     def run(self):

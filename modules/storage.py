@@ -1,30 +1,23 @@
 ###
 # File created by Leonardo Cencetti on 7/19/20
 ###
+import datetime as dt
 import os
 import sqlite3
 from sqlite3 import Error
-from threading import Thread
-import datetime as dt
+
 import pandas as pd
 
 from config.config import *
-from modules.databus import Topic
+from modules.base import BaseModule
 from support.types import DbRequest, StockResponse
 
 
-class Storage:
-    def __init__(self, request_bus, response_bus):
-        # I/O handles
-        self._input_bus: Topic = request_bus
-        self._output_bus: Topic = response_bus
-        # support
+class Storage(BaseModule):
+    def __init__(self, input_bus, output_bus):
+        super().__init__(input_bus, output_bus)
         self._logger = logging.getLogger(__name__)
-        self._sig_interrupt = False
-        self._running = False
         # main
-        self.thread = Thread(target=self._routine)
-        self.thread.daemon = True
         self._connection = None
         self._cursor = None
 
@@ -43,6 +36,7 @@ class Storage:
             self._cursor.close()
             self._connection.close()
             self._logger.info('Disconnected from database "{}"'.format(DB_PATH))
+            self._connection = self._cursor = None
         else:
             self._logger.warning('Database not connected.')
 
@@ -105,11 +99,6 @@ class Storage:
             index_label='timestamp'
         )
 
-    def _routine(self):
-        while not self._sig_interrupt:
-            self._run_once()
-        self._logger.debug('Module loop interrupted.')
-
     def _run_once(self):
         task = self._input_bus.get()
         data = self.get_data(task)
@@ -124,32 +113,9 @@ class Storage:
         self._output_bus.put(message)
 
     def run(self, join=False):
-        if self._running:
-            self._logger.warning('Module already running.')
-            return
-
         self._connect()
-        # start the thread
-        self._sig_interrupt = False
-        self.thread.start()
-
-        self._logger.debug('Module started.')
-        if join:
-            self._logger.debug('Joining thread.')
-            self.thread.join()
+        super().run(join)
 
     def stop(self):
-        if not self._running:
-            self._logger.warning('Module not running.')
-            return
-
-        # stopping thread
-        self._logger.debug('Stopping thread.')
-        self._sig_interrupt = True
-        self.thread.join()
-        self._running = False
-        self._logger.debug('Thread stopped.')
+        super().stop()
         self._disconnect()
-
-    def close(self):
-        self.stop()
