@@ -3,13 +3,12 @@
 ###
 
 import matplotlib.pyplot as plt
-import pandas as pd
 import numpy as np
-from support.wrappers import fetch_data
+import pandas as pd
 
 symbols_list = ['AAPL']
 
-task= 'full_intraday'
+task = 'full_intraday'
 aapl = fetch_data(symbols_list, task)
 
 # Initialize the short and long windows
