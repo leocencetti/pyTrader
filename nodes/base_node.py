@@ -1,20 +1,30 @@
 #
 # File created by Leonardo Cencetti on 2/5/2021
 #
+from queue import Empty
 from threading import Event, Thread
-from .common import NodeState
+
 from utils.custom_logger import *
+from .common import NodeState, Task, NodeID
+from .master_node import MasterNode
 
 
 class BaseNode:
-    def __init__(self, name: str, master_node):
+    def __new__(cls, *args, **kwargs):
+        # prevent instantiation
+        if cls is BaseNode:
+            raise TypeError('{} cannot be instantiated'.format(cls))
+        return object.__new__(cls)
+
+    def __init__(self, node_id: NodeID, master_node: MasterNode):
         self._state = NodeState.IDLING
-        self._logger = logging.getLogger(name=name)
+        self._logger = logging.getLogger(name=str(node_id))
         self.common_buffer = None
         self._stop_requested = Event()
-        self._thread = Thread()
+        self._job_done = Event()
+        self._thread = Thread(target=self._main_loop, daemon=True)
         self._master = master_node
-        self._logger.info('Initialized')
+        self._logger.debug('Initialized')
 
     @property
     def state(self):
@@ -27,33 +37,65 @@ class BaseNode:
 
     def run(self) -> bool:
         if self.state is NodeState.RUNNING:
-            self._logger.error('Already running')
+            self._logger.warning('Already running')
             return False
-        self._logger.info('Starting thread')
+        self._logger.debug('Starting thread')
         self._stop_requested.clear()
+        self._job_done.clear()
         self.state = NodeState.RUNNING
         self._thread.start()
         return True
 
     def stop(self) -> bool:
         if self.state is not NodeState.RUNNING:
-            self._logger.error('Cannot stop while in status {}'.format(self.state))
+            self._logger.warning('Cannot stop while in status {}'.format(self.state.name))
             return False
-        self._logger.info('Stop requested')
+        self._logger.debug('Stopping thread')
         self._stop_requested.set()
         self.state = NodeState.STOPPING
         return True
 
     def join(self) -> bool:
         if self.state not in [NodeState.RUNNING, NodeState.STOPPING]:
-            self._logger.error('Cannot join while in status {}'.format(self.state))
+            self._logger.warning('Cannot join while in status {}'.format(self.state.name))
             return False
-        self._logger.info('Joining thread')
+        self._logger.debug('Joining thread')
         self._thread.join()
         self.state = NodeState.STOPPED if self._stop_requested.isSet() else NodeState.DONE
         return True
 
-    def _task(self):
-        self._logger.error('Did you forget to define a task?')
+    def _job(self):
+        try:
+            task = self.common_buffer[self.id].get(timeout=30)
+        except Empty:
+            self._logger.info('No task received in the last 30s. Stopping.')
+            self._job_done.set()
+            return
+
+        if not self._is_valid(task):
+            self.common_buffer[self.id].task_done()
+            return
+        self._process_task(task)
+        self.common_buffer[self.id].task_done()
+
+    def _main_loop(self):
+        while not self._stop_requested.isSet():
+            self._job()
+            if self._job_done.isSet():
+                self.state = NodeState.DONE
+                return
+        self.state = NodeState.STOPPED
+
+    def _is_valid(self, task: Task) -> bool:
+        if task.target is not self.id:
+            self._logger.warning('Received task for node {}, ignoring'.format(task.target.name))
+            return False
+        return True
+
+    def _send(self, target: NodeID, data: any):
+        self.common_buffer[target].put(Task(self.id, target, data))
+
+    def _process_task(self, task: Task):
+        self._logger.error('Did you forget to define a task processor?')
         self.state = NodeState.ERROR
         return NotImplemented

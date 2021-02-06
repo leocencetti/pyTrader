@@ -3,15 +3,13 @@
 ###
 import signal
 import sys
-from queue import Queue
 from threading import Event
 
-from .common import NodeID, NodeState
 from utils.custom_logger import *
+from .common import NodeID, NodeState, Buffer
 
 
 class MasterNode:
-    name = 'MASTER'
     id = NodeID.MASTER
 
     def interrupt_handler(self, signal, frame):
@@ -26,8 +24,8 @@ class MasterNode:
         self.state = NodeState.IDLING
         self._nodes = {}
         self._node_states = {}
-        self._logger = logging.getLogger(name=self.name)
-        self.common_buffer = Queue()
+        self._logger = logging.getLogger(name=str(self.id))
+        self.common_buffer = Buffer()
         self._stop_requested = Event()
         signal.signal(signal.SIGINT, self.interrupt_handler)
 
@@ -63,43 +61,47 @@ class MasterNode:
             self._join_node(node_id)
         self.state = NodeState.STOPPED
 
-    def add_node(self, node_id, node, overwrite: bool = True) -> bool:
+    def add_node(self, node_id: NodeID, overwrite: bool = True) -> bool:
         """
 
         :param node_id:
-        :param node:
         :param overwrite:
         :return:
         """
+        from nodes import NodeFactory
+
         if node_id in self._nodes:
             if not overwrite:
                 self._logger.error('Could not add node {} (already present)'.format(node_id))
                 return False
             else:
                 self._logger.warning('Overwriting node {} (already present)'.format(node_id))
+        node = NodeFactory[node_id](self)
         node.common_buffer = self.common_buffer
         self._nodes[node_id] = node
         self._node_states[node_id] = node.state
-        self._logger.info('Added node {}'.format(node_id))
+        self._logger.debug('Added node {}'.format(node_id))
         return True
 
-    def remove_node(self, node_id) -> bool:
+    def remove_node(self, node_id: NodeID) -> bool:
         """
 
         :param node_id:
         :return:
         """
         if self._node_states[node_id] is NodeState.RUNNING:
-            self._logger.error('Could not delete node {} (in status {})'.format(node_id, self._node_states[node_id]))
-        self._logger.debug('Deleting node {}'.format(node_id))
+            self._logger.error(
+                'Could not delete node {} (in status {})'.format(node_id, self._node_states[node_id]))
+        self._logger.debug('Removing node {}'.format(node_id))
         del self._nodes[node_id]
         del self._node_states[node_id]
-        self._logger.info('Deleted node {}'.format(node_id))
+        self._logger.debug('Removed node {}'.format(node_id))
         return True
 
-    def _start_node(self, node_id) -> bool:
+    def _start_node(self, node_id: NodeID) -> bool:
         if self._node_states[node_id] is not NodeState.IDLING:
-            self._logger.error('Could not start node {} (in status {})'.format(node_id, self._node_states[node_id]))
+            self._logger.error(
+                'Could not start node {} (in status {})'.format(node_id, self._node_states[node_id]))
             return False
         self._logger.debug('Starting node {}'.format(node_id))
         if self._nodes[node_id].run():
@@ -109,24 +111,25 @@ class MasterNode:
             self._logger.error('Could not start node {}'.format(node_id))
             return False
 
-    def _stop_node(self, node_id) -> bool:
-        print('here')
+    def _stop_node(self, node_id: NodeID) -> bool:
         if self._node_states[node_id] is not NodeState.RUNNING:
-            self._logger.error('Could not stop node {} (in status {})'.format(node_id, self._node_states[node_id]))
+            self._logger.error(
+                'Could not stop node {} (in status {})'.format(node_id, self._node_states[node_id]))
             return False
         self._logger.debug('Stopping node {}'.format(node_id))
         if self._nodes[node_id].stop():
-            self._logger.info('Stopped node {}'.format(node_id))
+            self._logger.info('Stop request sent to {}'.format(node_id))
             return True
         else:
             self._logger.error('Could not stop node {}'.format(node_id))
             return False
 
-    def _join_node(self, node_id) -> bool:
+    def _join_node(self, node_id: NodeID) -> bool:
         if self._node_states[node_id] not in [NodeState.RUNNING, NodeState.STOPPING]:
-            self._logger.error('Could not join node {} (in status {})'.format(node_id, self._node_states[node_id]))
+            self._logger.error(
+                'Could not join node {} (in status {})'.format(node_id, self._node_states[node_id]))
             return False
-        self._logger.debug('Joining node {}'.format(node_id))
+        self._logger.info('Joining node {}'.format(node_id))
         if self._nodes[node_id].join():
             return True
         return False
@@ -138,4 +141,3 @@ class MasterNode:
         :param status:
         """
         self._node_states[node_id] = status
-

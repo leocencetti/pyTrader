@@ -1,22 +1,32 @@
 ###
 # File created by Leonardo Cencetti on 2/6/21
 ###
-from threading import Thread
 from time import sleep
 
 from .base_node import BaseNode
-from .common import NodeID
+from .common import NodeID, Task
 
 
-class TestNode(BaseNode):
-    name = 'TEST'
-    id = NodeID.TEST
+class TestNodeFeeder(BaseNode):
+    name = 'TESTF'
+    id = NodeID.TESTF
 
     def __init__(self, master_node):
-        super(TestNode, self).__init__(self.name, master_node)
-        self._thread = Thread(target=self._task, daemon=True)
+        super(TestNodeFeeder, self).__init__(self.name, master_node)
 
-    def _task(self):
+    def _job(self):
+        target = NodeID.TESTC
         while not self._stop_requested.isSet():
-            self._logger.info('Hi')
+            self.common_buffer[target].put(Task(self.id, target, 'Hi'))
             sleep(1)
+
+
+class TestNodeConsumer(BaseNode):
+    id = NodeID.TESTC
+
+    def __init__(self, master_node):
+        super(TestNodeConsumer, self).__init__(self.id, master_node)
+
+    def _process_task(self, task):
+        self._logger.info(task.data)
+        sleep(1)
