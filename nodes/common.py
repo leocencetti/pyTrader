@@ -6,6 +6,7 @@ from datetime import datetime
 from enum import Enum, auto
 from queue import Queue
 
+
 class CustomEnum(Enum):
     def __str__(self):
         return '%s' % self._name_

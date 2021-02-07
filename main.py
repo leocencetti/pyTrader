@@ -12,4 +12,5 @@ if __name__ == '__main__':
     master.add_node(NodeID.BROKER)
     master.run()
     sleep(10)
-    master.stop()
+    master._nodes[NodeID.WATCHER].stop()
+    master.join()

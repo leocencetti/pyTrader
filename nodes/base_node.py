@@ -5,24 +5,30 @@ from queue import Empty
 from threading import Event, Thread
 
 from utils.custom_logger import *
-from .common import NodeState, Task, NodeID
+from .common import NodeState, Task, NodeID, ExecutionMode
 from .master_node import MasterNode
 
 
 class BaseNode:
+    MAX_THREADS = 4
+
     def __new__(cls, *args, **kwargs):
         # prevent instantiation
         if cls is BaseNode:
             raise TypeError('{} cannot be instantiated'.format(cls))
         return object.__new__(cls)
 
-    def __init__(self, node_id: NodeID, master_node: MasterNode):
+    def __init__(self, node_id: NodeID, master_node: MasterNode, mode: ExecutionMode = ExecutionMode.SERIAL):
+        self.mode = mode
         self._state = NodeState.IDLING
         self._logger = logging.getLogger(name=str(node_id))
         self.common_buffer = None
         self._stop_requested = Event()
         self._job_done = Event()
-        self._thread = Thread(target=self._main_loop, daemon=True)
+        if self.mode is ExecutionMode.SERIAL:
+            self._thread = Thread(target=self._main_loop, daemon=True)
+        else:
+            self._threads = [Thread(target=self._main_loop, daemon=True) for _ in range(self.MAX_THREADS)]
         self._master = master_node
         self._logger.debug('Initialized')
 
@@ -43,8 +49,11 @@ class BaseNode:
         self._stop_requested.clear()
         self._job_done.clear()
         self.state = NodeState.RUNNING
-        self._thread.start()
-        return True
+        if self.mode is ExecutionMode.SERIAL:
+            self._thread.start()
+            return True
+        for T in self._threads:
+            T.start()
 
     def stop(self) -> bool:
         if self.state is not NodeState.RUNNING:
@@ -60,7 +69,11 @@ class BaseNode:
             self._logger.warning('Cannot join while in status {}'.format(self.state.name))
             return False
         self._logger.debug('Joining thread')
-        self._thread.join()
+        if self.mode is ExecutionMode.SERIAL:
+            self._thread.join()
+        else:
+            for T in self._threads:
+                T.join()
         self.state = NodeState.STOPPED if self._stop_requested.isSet() else NodeState.DONE
         return True
 

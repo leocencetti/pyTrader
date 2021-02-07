@@ -3,8 +3,8 @@
 ###
 import random
 import string
-from time import sleep
 
+from support.alpha_vantage_api import AVRequest, RequestType, Interval, SeriesType
 from .base_node import BaseNode
 from .common import NodeID
 
@@ -21,14 +21,20 @@ class BrokerNode(BaseNode):
         with open('data/stock_symbols.txt') as f:
             self.symbols = f.read().splitlines()
 
-        self.task_type = ['fintraday', 'sma50', 'sma200', 'ema50', 'ema200']
+        self.task_type = [RequestType.INTRADAY,
+                          RequestType.SMA50,
+                          RequestType.SMA200,
+                          RequestType.EMA50,
+                          RequestType.EMA200]
 
     def _job(self):
         while not self._stop_requested.isSet():
             for s in self.symbols:
                 for d in self.task_type:
-                    self._send(NodeID.WATCHER, {
-                        'task_type': d,
-                        'key'      : key_generator(),
-                        'symbol'   : s})
-            sleep(1)
+                    self._send(NodeID.WATCHER, AVRequest(
+                        key=key_generator(),
+                        type=d,
+                        interval=Interval.MIN1,
+                        symbol=s,
+                        series=SeriesType.CLOSE))
+            self._stop_requested.wait(60)
