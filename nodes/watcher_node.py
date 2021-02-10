@@ -1,15 +1,15 @@
 ###
 # File created by Leonardo Cencetti on 2/6/21
 ###
-from nodes import BaseNode, NodeID, ExecutionMode
-from support.alpha_vantage_api import get_intraday, get_sma, get_ema, RequestType, AVRequest
-
+from nodes import BaseNode, NodeID, Mode
+from support.alpha_vantage_api import get_sma, get_ema, RequestType, AVRequest
+from support.tiingo_api import get_intraday
 
 class WatcherNode(BaseNode):
     id = NodeID.WATCHER
 
     def __init__(self, master_node):
-        super(WatcherNode, self).__init__(self.id, master_node, ExecutionMode.PARALLEL)
+        super(WatcherNode, self).__init__(self.id, master_node, Mode.J4)
 
     def _process_task(self, task):
         r: AVRequest = task.data
@@ -31,3 +31,4 @@ class WatcherNode(BaseNode):
             self._logger.warning('Unknown task type {}'.format(r.type))
             return
         self._send(NodeID.PROCESSOR, data)
+        # self._send(NodeID.DASHBOARD, data)

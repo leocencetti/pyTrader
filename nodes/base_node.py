@@ -1,36 +1,33 @@
 #
 # File created by Leonardo Cencetti on 2/5/2021
 #
+import threading
 from queue import Empty
 from threading import Event, Thread
 
 from utils.custom_logger import *
-from .common import NodeState, Task, NodeID, ExecutionMode
+from .common import NodeState, Task, NodeID, Mode, Container
 from .master_node import MasterNode
 
 
 class BaseNode:
-    MAX_THREADS = 4
-
     def __new__(cls, *args, **kwargs):
         # prevent instantiation
         if cls is BaseNode:
             raise TypeError('{} cannot be instantiated'.format(cls))
         return object.__new__(cls)
 
-    def __init__(self, node_id: NodeID, master_node: MasterNode, mode: ExecutionMode = ExecutionMode.SERIAL):
+    def __init__(self, node_id: NodeID, master_node: MasterNode, mode: Mode = Mode.SERIAL, timeout: float = None):
         self.mode = mode
         self._state = NodeState.IDLING
         self._logger = logging.getLogger(name=str(node_id))
         self.common_buffer = None
         self._stop_requested = Event()
         self._job_done = Event()
-        if self.mode is ExecutionMode.SERIAL:
-            self._thread = Thread(target=self._main_loop, daemon=True)
-        else:
-            self._threads = [Thread(target=self._main_loop, daemon=True) for _ in range(self.MAX_THREADS)]
+        self._threads = Container([Thread(target=self._main_loop, daemon=True) for _ in range(self.mode)])
         self._master = master_node
         self._logger.debug('Initialized')
+        self._timeout = timeout
 
     @property
     def state(self):
@@ -49,11 +46,8 @@ class BaseNode:
         self._stop_requested.clear()
         self._job_done.clear()
         self.state = NodeState.RUNNING
-        if self.mode is ExecutionMode.SERIAL:
-            self._thread.start()
-            return True
-        for T in self._threads:
-            T.start()
+        self._threads.start()
+        return True
 
     def stop(self) -> bool:
         if self.state is not NodeState.RUNNING:
@@ -69,19 +63,16 @@ class BaseNode:
             self._logger.warning('Cannot join while in status {}'.format(self.state.name))
             return False
         self._logger.debug('Joining thread')
-        if self.mode is ExecutionMode.SERIAL:
-            self._thread.join()
-        else:
-            for T in self._threads:
-                T.join()
+        self._threads.join()
         self.state = NodeState.STOPPED if self._stop_requested.isSet() else NodeState.DONE
         return True
 
     def _job(self):
         try:
-            task = self.common_buffer[self.id].get(timeout=30)
+            task = self.common_buffer[self.id].get(timeout=self._timeout)
         except Empty:
-            self._logger.info('No task received in the last 30s. Stopping.')
+            self._logger.info(
+                '[Thread {}] No task received in the last 30s. Stopping.'.format(threading.get_native_id()))
             self._job_done.set()
             return
 

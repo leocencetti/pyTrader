@@ -62,6 +62,8 @@ class AVReply:
 def get_intraday(symbol, key, interval='1min', outputsize='compact'):
     ts = TimeSeries(key, output_format='pandas')
     data, meta = ts.get_intraday(symbol=symbol, interval=interval, outputsize=outputsize)
+    # reverse order (intraday is returned in descendent order
+    data = data[::-1]
     data.rename(columns={
         '1. open'  : 'open',
         '2. high'  : 'high',

@@ -1,9 +1,10 @@
 ###
 # File created by Leonardo Cencetti on 2/6/21
 ###
+from collections import UserList
 from dataclasses import dataclass
 from datetime import datetime
-from enum import Enum, auto
+from enum import Enum, auto, IntEnum
 from queue import Queue
 
 
@@ -12,9 +13,16 @@ class CustomEnum(Enum):
         return '%s' % self._name_
 
 
-class ExecutionMode(CustomEnum):
-    PARALLEL = auto()
-    SERIAL = auto()
+class CustomIntEnum(IntEnum):
+    def __str__(self):
+        return '%s' % self._name_
+
+
+class Mode(CustomIntEnum):
+    SERIAL = 1
+    J2 = 2
+    J4 = 4
+    J8 = 8
 
 
 class NodeID(CustomEnum):
@@ -25,6 +33,7 @@ class NodeID(CustomEnum):
     WATCHER = auto()
     BROKER = auto()
     PROCESSOR = auto()
+    DASHBOARD = auto()
 
 
 class NodeState(CustomEnum):
@@ -56,3 +65,13 @@ class Buffer:
     def flush(self, node_id: NodeID):
         with self._queues[node_id].mutex:
             self._queues[node_id].queue.clear()
+
+
+class Container(UserList):
+    def start(self):
+        for T in self.data:
+            T.start()
+
+    def join(self):
+        for T in self.data:
+            T.join()

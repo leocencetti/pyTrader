@@ -1,28 +1,53 @@
 ###
-# File created by Leonardo Cencetti on 2/6/21
+# File created by Leonardo Cencetti on 2/8/21
 ###
+from threading import Thread
 
+import dash_core_components as dcc
+import dash_html_components as html
 import pandas as pd
 import plotly.graph_objects as go
+from dash import Dash
+from dash.dependencies import Output, Input
 from plotly.subplots import make_subplots
 
-from support.alpha_vantage_api import AVReply, RequestType
+from support.alpha_vantage_api import RequestType
 from .base_node import BaseNode
 from .common import NodeID
 
 pd.options.plotting.backend = 'plotly'
 
 
-class ProcessorNode(BaseNode):
-    id = NodeID.PROCESSOR
+class DashboardNode(BaseNode):
+    id = NodeID.DASHBOARD
 
     def __init__(self, master_node):
-        super(ProcessorNode, self).__init__(self.id, master_node)
+        super(DashboardNode, self).__init__(self.id, master_node)
+        external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+        self.dash_app = Dash(__name__, external_stylesheets=external_stylesheets)
+        self.dash_app.layout = html.Div(
+            html.Div([
+                html.H4('Stock live feed'),
+                dcc.Graph(id='live-update-graph'),
+                dcc.Interval(
+                    id='interval-component',
+                    interval=10 * 1000,  # in milliseconds
+                    n_intervals=0
+                )
+            ])
+        )
+        self.latest_data = None
+        self.dash_app.callback(Output('live-update-graph', 'figure'),
+                               Input('interval-component', 'n_intervals'))(self._plot)
+        self._dash_thread = Thread(target=self.dash_app.run_server, daemon=True, )
+        self._dash_thread.start()
 
     def _process_task(self, task):
-        self._plot(task.data)
+        self.latest_data = task.data
+        print('Updated data')
 
-    def _plot(self, reply: AVReply):
+    def _plot(self, n):
+        reply = self.latest_data
         fig = make_subplots(specs=[[{"secondary_y": True}]])
         if reply.type in [RequestType.INTRADAY, RequestType.FULL_INTRADAY]:
             fig.add_trace(go.Candlestick(x=reply.data.index,
@@ -31,12 +56,11 @@ class ProcessorNode(BaseNode):
                                          close=reply.data['close'],
                                          low=reply.data['low'],
                                          name='{} OHLC'.format(reply.symbol)), secondary_y=False)
-            if 'volume' in reply.data.columns:
-                fig.add_trace(go.Bar(x=reply.data.index,
-                                     y=reply.data['volume'],
-                                     name='{} Volume'.format(reply.symbol),
-                                     opacity=0.2,
-                                     marker_color='blue'), secondary_y=True)
+            fig.add_trace(go.Bar(x=reply.data.index,
+                                 y=reply.data['volume'],
+                                 name='{} Volume'.format(reply.symbol),
+                                 opacity=0.2,
+                                 marker_color='blue'), secondary_y=True)
 
         if reply.type in [RequestType.EMA50, RequestType.EMA200, RequestType.SMA50, RequestType.SMA200]:
             fig.add_trace(go.Scatter(x=reply.data.index,
@@ -44,6 +68,7 @@ class ProcessorNode(BaseNode):
 
         fig.update_layout(
             title='{} for symbol {}'.format(reply.type, reply.symbol),
+            uirevision=reply.symbol,
             yaxis_title='USD per Share',
             yaxis_fixedrange=False)
         fig.update_xaxes(
@@ -68,4 +93,6 @@ class ProcessorNode(BaseNode):
                 ])
             )
         )
-        fig.show()
+        # fig.show()
+        print('updated figure')
+        return fig

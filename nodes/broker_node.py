@@ -1,16 +1,12 @@
 ###
+# File created by Leonardo Cencetti on 2/8/21
+###
+###
 # File created by Leonardo Cencetti on 2/6/21
 ###
-import random
-import string
 
-from support.alpha_vantage_api import AVRequest, RequestType, Interval, SeriesType
 from .base_node import BaseNode
-from .common import NodeID
-
-
-def key_generator(size=16, chars=string.ascii_uppercase + string.digits):
-    return ''.join(random.choice(chars) for _ in range(size))
+from .common import NodeID, Mode
 
 
 class BrokerNode(BaseNode):
@@ -18,23 +14,40 @@ class BrokerNode(BaseNode):
 
     def __init__(self, master_node):
         super(BrokerNode, self).__init__(self.id, master_node)
-        with open('data/stock_symbols.txt') as f:
-            self.symbols = f.read().splitlines()
+        # self._degiro = degiroapi.DeGiro()
+        # self._degiro.login(auth2fa=True)
+        #
+        # cashfunds = self._degiro.getdata(degiroapi.Data.Type.CASHFUNDS)
+        # for data in cashfunds:
+        #     print(data)
+        #
+        # portfolio = self._degiro.getdata(degiroapi.Data.Type.PORTFOLIO)
+        # for data in portfolio:
+        #     print(data)
+        #
+        # transactions = self._degiro.transactions(datetime(2019, 1, 1), datetime.now())
+        # print(pretty_json(transactions))
+        #
+        # self._degiro.logout()
 
-        self.task_type = [RequestType.INTRADAY,
-                          RequestType.SMA50,
-                          RequestType.SMA200,
-                          RequestType.EMA50,
-                          RequestType.EMA200]
-
-    def _job(self):
-        while not self._stop_requested.isSet():
-            for s in self.symbols:
-                for d in self.task_type:
-                    self._send(NodeID.WATCHER, AVRequest(
-                        key=key_generator(),
-                        type=d,
-                        interval=Interval.MIN1,
-                        symbol=s,
-                        series=SeriesType.CLOSE))
-            self._stop_requested.wait(60)
+    def _process_task(self, task):
+        pass
+        # r: AVRequest = task.data
+        # interval = r.interval.value
+        # series = r.series.value
+        # if r.type is RequestType.SMA50:
+        #     data = get_sma(r.symbol, r.key, interval, time_period=50, series_type=series)
+        # elif r.type is RequestType.SMA200:
+        #     data = get_sma(r.symbol, r.key, interval, time_period=200, series_type=series)
+        # elif r.type is RequestType.EMA50:
+        #     data = get_ema(r.symbol, r.key, interval, time_period=50, series_type=series)
+        # elif r.type is RequestType.EMA200:
+        #     data = get_ema(r.symbol, r.key, interval, time_period=200, series_type=series)
+        # elif r.type is RequestType.INTRADAY:
+        #     data = get_intraday(r.symbol, r.key, interval)
+        # elif r.type is RequestType.FULL_INTRADAY:
+        #     data = get_intraday(r.symbol, r.key, interval, outputsize='full')
+        # else:
+        #     self._logger.warning('Unknown task type {}'.format(r.type))
+        #     return
+        # self._send(NodeID.PROCESSOR, data)
