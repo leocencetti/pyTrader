@@ -4,3 +4,9 @@
 [submodule "external/alphavantage"]
 	path = external/alphavantage
 	url = git@github.com:leocencetti/AlphaVantage-Fork.git
+[submodule "external/tiingo"]
+	path = external/tiingo
+	url = git@github.com:hydrosquall/tiingo-python.git
+[submodule "external/degiro"]
+	path = external/degiro
+	url = git@github.com:lolokraus/DegiroAPI.git
