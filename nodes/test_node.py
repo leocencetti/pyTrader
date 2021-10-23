@@ -8,7 +8,7 @@ from .common import NodeID, Task
 
 
 class TestNodeFeeder(BaseNode):
-    name = 'TESTF'
+    name = "TESTF"
     id = NodeID.TESTF
 
     def __init__(self, master_node):
@@ -17,7 +17,7 @@ class TestNodeFeeder(BaseNode):
     def _job(self):
         target = NodeID.TESTC
         while not self._stop_requested.isSet():
-            self.common_buffer[target].put(Task(self.id, target, 'Hi'))
+            self.common_buffer[target].put(Task(self.id, target, "Hi"))
             sleep(1)
 
 

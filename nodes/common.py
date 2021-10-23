@@ -10,12 +10,12 @@ from queue import Queue
 
 class CustomEnum(Enum):
     def __str__(self):
-        return '%s' % self._name_
+        return "%s" % self._name_
 
 
 class CustomIntEnum(IntEnum):
     def __str__(self):
-        return '%s' % self._name_
+        return "%s" % self._name_
 
 
 class Mode(CustomIntEnum):

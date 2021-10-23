@@ -6,16 +6,16 @@ import pandas as pd
 from dash_app import DashApp
 from wrappers import fetchStocks
 
-mode = 'run'
+mode = "run"
 
-if mode == 'get':
-    with open('../data/stock_symbols.txt') as f:
+if mode == "get":
+    with open("../data/stock_symbols.txt") as f:
         symbols_list = f.read().splitlines()
 
-    task_list = ['fintraday', 'sma50', 'sma200', 'ema50', 'ema200']
+    task_list = ["fintraday", "sma50", "sma200", "ema50", "ema200"]
     data = fetchStocks(symbols_list, task_list)
-    data.to_pickle('data/backup.pkl')
-elif mode == 'run':
-    data = pd.read_pickle('../data/backup.pkl')
+    data.to_pickle("data/backup.pkl")
+elif mode == "run":
+    data = pd.read_pickle("../data/backup.pkl")
     dash_app = DashApp(data)
     dash_app.run()

@@ -12,12 +12,12 @@ from .test_node import TestNodeConsumer, TestNodeFeeder
 from .watcher_node import WatcherNode
 
 NodeFactory = {
-    NodeID.MASTER   : MasterNode,
-    NodeID.BROKER   : BrokerNode,
-    NodeID.WATCHER  : WatcherNode,
+    NodeID.MASTER: MasterNode,
+    NodeID.BROKER: BrokerNode,
+    NodeID.WATCHER: WatcherNode,
     NodeID.PROCESSOR: ProcessorNode,
-    NodeID.TESTF    : TestNodeFeeder,
-    NodeID.TESTC    : TestNodeConsumer,
-    NodeID.ROUTER   : RouterNode,
-    NodeID.DASHBOARD: DashboardNode
+    NodeID.TESTF: TestNodeFeeder,
+    NodeID.TESTC: TestNodeConsumer,
+    NodeID.ROUTER: RouterNode,
+    NodeID.DASHBOARD: DashboardNode,
 }

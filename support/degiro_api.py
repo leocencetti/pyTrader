@@ -6,7 +6,7 @@ from datetime import datetime
 import degiroapi
 from degiroapi.utils import pretty_json
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     degiro = degiroapi.DeGiro()
     degiro.login(auth2fa=True)
 
